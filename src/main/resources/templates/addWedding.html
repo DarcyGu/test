@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>添加案例</title>
+</head>
+<body>
+<h1 align="center">添加案例</h1>
+<p align="center"><button onclick="window.location='/weddingList'">返回</button></p>
+<div align="center">
+<form th:object="${wedding}" method="post">
+    <br>名称<input type="text" name="weddingName" th:value="${wedding.weddingName}" required="required"/></br>
+    <br>风格<input type="text" name="weddingStyle" th:value="${wedding.weddingStyle}" required="required"/></br>
+    <br>价格<input type="number" name="weddingPrice" th:value="${wedding.weddingPrice}" required="required"/></br>
+    <br>介绍<input type="text" name="weddingIntro" th:value="${wedding.weddingIntro}" required="required"/></br>
+    <br>酒店<input type="text" name="weddingHotel" th:value="${wedding.weddingHotel}" required="required"/></br>
+    <br>图片<input type="text" name="weddingPic" th:value="${wedding.weddingPic}"/></br>
+    <br><input type="submit" value="提交"/></br>
+</form>
+</div>
+</body>
+</html>

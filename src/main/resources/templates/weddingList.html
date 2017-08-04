@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>案例列表</title>
+</head>
+<body>
+<h1 align="center">婚礼案例管理</h1>
+<p align="center">
+<a href="/addWedding">添加案例</a>
+</p>
+<table width="100%" border="1" cellspacing="1" cellpadding="0">
+    <!--/*@thymesVar id="learnList" type=""*/-->
+    <tr>
+        <td>编号</td>
+        <td>婚礼</td>
+        <td>风格</td>
+        <td>价格</td>
+        <td>介绍</td>
+        <td>酒店</td>
+        <td>图片</td>
+        <td>操作</td>
+    </tr>
+    <script>var i=1;</script>
+    <tr th:each="wedding : ${weddingList}">
+        <td><script>document.write(i);i++;</script></td>
+        <td th:text="${wedding.weddingName}"></td>
+        <td th:text="${wedding.weddingStyle}"></td>
+        <td th:text="${wedding.weddingPrice}"></td>
+        <td th:text="${wedding.weddingIntro}"></td>
+        <td th:text="${wedding.weddingHotel}"></td>
+        <td><img th:src="${wedding.weddingPic}" width="100" height="80"/></td>
+        <td>
+            <a th:href="@{/weddingDetails/__${wedding.weddingId}__}">查看</a>
+            <a th:href="@{/updateWedding/__${wedding.weddingId}__}">修改</a>
+            <a th:href="@{/delete/__${wedding.weddingId}__}">删除</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
