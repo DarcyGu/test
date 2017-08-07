@@ -1,36 +1,114 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <title>案例详情</title>
+    <style>
+        .container{
+            display:flex;
+            width:100%;
+            height:100%;
+        }
+        .sidebar{
+            width:250px;
+            background:#B2A4A4;
+            flex-flow:column;
+        }
+        h1{
+            background: pink;
+            line-height:80px;
+        }
+        .main {
+            -webkit-flex: 1;
+            order: 2;
+            background: #f5f5f5;
+        }
+        .header {
+            background: pink;
+            min-height: 80px;
+        }
+        nav a{
+            color:white;
+        }
+        th {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h1 align="center">案例详情</h1>
-<p align="center">
-    <button onclick="window.location='/weddingList'">返回</button>
-</p>
-<table width="100%" border="1" cellspacing="1" cellpadding="0">
-    <!--/*@thymesVar id="learnList" type=""*/-->
-    <tr>
-        <td>婚礼</td>
-        <td>风格</td>
-        <td>价格</td>
-        <td>介绍</td>
-        <td>酒店</td>
-        <td>图片</td>
-        <td>操作</td>
-    </tr>
-    <tr>
-        <td th:text="${wedding.weddingName}"></td>
-        <td th:text="${wedding.weddingStyle}"></td>
-        <td th:text="${wedding.weddingPrice}"></td>
-        <td th:text="${wedding.weddingIntro}"></td>
-        <td th:text="${wedding.weddingHotel}"></td>
-        <td><img th:src="${wedding.weddingPic}" width="100" height="80"/></td>
-        <td>
-            <a th:href="@{/updateWedding/__${wedding.weddingId}__}">修改</a>
-            <a th:href="@{/delete/__${wedding.weddingId}__}">删除</a>
-        </td>
-    </tr>
-</table>
+<div class="container">
+    <aside class="sidebar" style="flex-flow:column">
+        <h1 style="margin:0;padding:0 30px;color:#fff">My Day</h1>
+        <nav style="margin:30px 0">
+            <ul style="margin:0;list-style:none;padding:0;font-weight:700">
+                <li><a style="padding:20px 30px" class="fa fa-home" href="#"> 首页</a></li>
+                <li><a style="padding:20px 30px" class="fa fa-heart" href="/weddingList"> 案例管理</a></li>
+                <li><a style="padding:20px 30px" class="fa fa-info-circle" href="#"> 公司信息管理</a></li>
+                <!--<li><a class="btn btn-danger" style="display:block;padding:10px;margin:10px 30px;font-weight:400" href="#">退出</a></li>-->
+            </ul>
+        </nav>
+    </aside>
+    <div class="main">
+        <header class="header">
+            <h1 class="text-center" style="color: white">婚庆管理系统</h1>
+        </header>
+        <div style="border-right: 1px solid #DDD;margin:20px">
+            <h2 align="center">案例详情</h2>
+            <div>
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <td width="150px">名称</td>
+                        <td th:text="${wedding.weddingName}"></td>
+                    </tr>
+                    <tr>
+                        <td>风格</td>
+                        <td th:text="${wedding.weddingStyle}"></td>
+                    </tr>
+                    <tr>
+                        <td>价格</td>
+                        <td th:text="${wedding.weddingPrice}"></td>
+                    </tr>
+                    <tr>
+                        <td>介绍</td>
+                        <td th:text="${wedding.weddingIntro}"></td>
+                    </tr>
+                    <tr>
+                        <td>酒店</td>
+                        <td th:text="${wedding.weddingHotel}"></td>
+                    </tr>
+                    <tr>
+                        <td>策划师</td>
+                        <td th:text="${wedding.weddingPlanner}"></td>
+                    </tr>
+                    <tr>
+                        <td>图片</td>
+                        <td><img th:src="${wedding.weddingPic}" class="img-thumbnail"/></td>
+                    </tr>
+                    <tr align="center">
+                        <td colspan="2">
+                        <a class="btn btn-primary fa fa-reply" href="/weddingList"> 返回</a>
+                        <a th:href="@{/updateWedding/__${wedding.weddingId}__}" class="btn btn-warning fa fa-pencil"> 修改</a>
+                        <a th:href="@{/delete/__${wedding.weddingId}__}" class="btn btn-danger fa fa-trash" onclick="return confirmDelete();"> 删除</a>
+                        <script type="text/javascript">
+                            function confirmDelete(){
+                                return confirm("是否确认删除");
+                                if(confirm("是否确认删除"))
+                                    return true;
+                                else
+                                    return false;
+                            }
+                        </script>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>

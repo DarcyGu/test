@@ -13,10 +13,10 @@ public interface WeddingMapper {
     @Select("SELECT * FROM wedding WHERE weddingId = #{weddingId}")
     Wedding getOne(int weddingId);
 
-    @Insert("INSERT INTO wedding(weddingName,weddingStyle,weddingPrice,weddingIntro,weddingHotel,weddingPic) VALUES(#{weddingName},#{weddingStyle},#{weddingPrice},#{weddingIntro},#{weddingHotel},#{weddingPic})")
+    @Insert("INSERT INTO wedding(weddingName,weddingStyle,weddingPrice,weddingIntro,weddingHotel,weddingPic,weddingPlanner) VALUES(#{weddingName},#{weddingStyle},#{weddingPrice},#{weddingIntro},#{weddingHotel},#{weddingPic},#{weddingPlanner})")
     void insert(Wedding wedding);
 
-    @Update("UPDATE wedding SET weddingName=#{weddingName},weddingStyle=#{weddingStyle},weddingPrice=#{weddingPrice},weddingIntro=#{weddingIntro},weddingHotel=#{weddingHotel},weddingPic=#{weddingPic} WHERE weddingId =#{weddingId}")
+    @Update("UPDATE wedding SET weddingName=#{weddingName},weddingStyle=#{weddingStyle},weddingPrice=#{weddingPrice},weddingIntro=#{weddingIntro},weddingHotel=#{weddingHotel},weddingPic=#{weddingPic},weddingPlanner=#{weddingPlanner} WHERE weddingId =#{weddingId}")
     void update(Wedding wedding);
 
     @Delete("DELETE FROM wedding WHERE weddingId =#{weddingId}")
