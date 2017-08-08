@@ -44,8 +44,8 @@
         <nav style="margin:30px 0">
             <ul style="margin:0;list-style:none;padding:0;font-weight:700">
                 <li><a style="padding:20px 30px" class="fa fa-home" href="#"> 首页</a></li>
-                <li><a style="padding:20px 30px" class="fa fa-heart" href="weddingList.html"> 案例管理</a></li>
-                <li><a style="padding:20px 30px" class="fa fa-info-circle" href="#"> 公司信息管理</a></li>
+                <li><a style="padding:20px 30px" class="fa fa-heart" href="/weddingList"> 案例管理</a></li>
+                <li><a style="padding:20px 30px" class="fa fa-info-circle" href="/updateCorp"> 公司信息管理</a></li>
                 <!--<li><a class="btn btn-danger" style="display:block;padding:10px;margin:10px 30px;font-weight:400" href="#">退出</a></li>-->
             </ul>
         </nav>
@@ -86,8 +86,8 @@
                         <td th:text="${wedding.weddingPlanner}"></td>
                         <!--<td><img th:src="${wedding.weddingPic}" class="img-thumbnail"/></td>-->
                         <td>
-                            <a th:href="@{/weddingDetails/__${wedding.weddingId}__}" class="btn btn-info fa fa-search"> 查看</a>
-                            <a th:href="@{/updateWedding/__${wedding.weddingId}__}" class="btn btn-warning fa fa-pencil"> 修改</a>
+                            <a th:href="@{/weddingDetails/__${wedding.weddingId}__}" class="btn btn-success fa fa-search"> 查看</a>
+                            <a th:href="@{/updateWedding/__${wedding.weddingId}__}" class="btn btn-primary fa fa-pencil"> 修改</a>
                             <a th:href="@{/delete/__${wedding.weddingId}__}" class="btn btn-danger fa fa-trash" onclick="return confirmDelete();"> 删除</a>
                             <script type="text/javascript">
                                 function confirmDelete(){

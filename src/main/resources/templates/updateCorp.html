@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <title>修改案例</title>
+    <title>公司信息管理</title>
     <style>
         .container{
             display:flex;
@@ -38,6 +38,13 @@
         tr {
             height: 50px;
         }
+        .hide {
+            border: none;
+            background-color: transparent;
+        }
+        .long {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -58,42 +65,34 @@
             <h1 class="text-center" style="color: white">婚庆管理系统</h1>
         </header>
         <div style="border-right: 1px solid #DDD;margin:20px">
-            <h2 align="center">修改案例</h2>
-            <div align="center" style="margin-left: 350px;margin-right: 350px">
-                <form th:object="${wedding}" method="post">
-                    <table class="table" style="text-align: center">
+            <h2 align="center">公司信息</h2>
+            <div align="center" style="margin-left: 200px;margin-right: 200px">
+                <form th:object="${corp}" method="post">
+                    <table class="table">
                         <tr>
-                            <td>名称</td>
-                            <td><input type="text" name="weddingName" th:value="${wedding.weddingName}" required="required"/></td>
+                            <td>公司名称</td>
+                            <td><input type="text" name="corpName" th:value="${corp.corpName}" required="required" readonly="readonly" class="hide"/></td>
                         </tr>
                         <tr>
-                            <td>风格</td>
-                            <td><input type="text" name="weddingStyle" th:value="${wedding.weddingStyle}" required="required"/></td>
+                            <td>地址</td>
+                            <td><input type="text" name="corpAddress" th:value="${corp.corpAddress}" required="required" readonly="readonly" class="hide"/></td>
                         </tr>
                         <tr>
-                            <td>价格</td>
-                            <td><input type="number" name="weddingPrice" th:value="${wedding.weddingPrice}" required="required"/></td>
+                            <td>联系电话</td>
+                            <td><input type="text" name="corpContact" th:value="${corp.corpContact}" required="required" readonly="readonly" class="hide"/></td>
                         </tr>
                         <tr>
                             <td>介绍</td>
-                            <td><textarea rows="10" name="weddingIntro" th:field="${wedding.weddingIntro}" required="required"></textarea></td>
+                            <td><textarea rows="10" name="corpIntro" th:field="${corp.corpIntro}" required="required" readonly="readonly" class="hide"></textarea></td>
                         </tr>
                         <tr>
-                            <td>酒店</td>
-                            <td><input type="text" name="weddingHotel" th:value="${wedding.weddingHotel}" required="required"/></td>
-                        </tr>
-                        <tr>
-                            <td>策划师</td>
-                            <td><input type="text" name="weddingPlanner" th:value="${wedding.weddingPlanner}" required="required"/></td>
-                        </tr>
-                        <tr>
-                            <td>图片</td>
-                            <td><input type="text" name="weddingPic" th:value="${wedding.weddingPic}"/></td>
+                            <td>Email</td>
+                            <td><input type="text" name="corpEmail" th:value="${corp.corpEmail}" required="required" readonly="readonly" class="hide"/></td>
                         </tr>
                     </table>
                     <br>
-                    <button onClick="javascript :history.back(-1);" class="fa fa-remove btn btn-primary"> 取消</button>
-                    <button type="submit" class="btn btn-success fa fa-check"> 确定</button></br>
+                    <a class="btn btn-primary fa fa-pencil" href="#" id="editBtn"> 修改</a>
+                    <button type="submit" class="btn btn-success fa fa-check" style="display: none" id="confirmBtn"> 确定</button></br>
                 </form>
             </div>
         </div>
@@ -101,5 +100,13 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $("input,textarea").addClass("long")
+    $("#editBtn").click(function () {
+        $("input,textarea").removeClass("hide").removeAttr("readonly");
+        $("#editBtn").hide();
+        $("#confirmBtn").show();
+    })
+</script>
 </body>
 </html>
